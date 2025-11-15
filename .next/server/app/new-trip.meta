@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/new-trip/layout,_N_T_/new-trip/page,_N_T_/new-trip"
+  },
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/new-trip/__PAGE__",
+    "/new-trip",
+    "/_index",
+    "/_head"
+  ]
+}

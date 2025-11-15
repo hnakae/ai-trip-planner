@@ -1,0 +1,10 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/generate-itinerary/route": "/api/generate-itinerary",
+  "/compare/page": "/compare",
+  "/favicon.ico/route": "/favicon.ico",
+  "/generate/page": "/generate",
+  "/new-trip/page": "/new-trip",
+  "/page": "/"
+}
