@@ -2,28 +2,46 @@
 
 import { useSearchParams } from "next/navigation";
 import { Itinerary } from "@/lib/types";
+import PlanComparison from "@/components/PlanComparison";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function CompareClient() {
   const params = useSearchParams();
-  const plans: Itinerary = JSON.parse(params.get("plans") || "{}");
+  const plansJson = params.get("plans");
 
-  return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
-      <div className="border rounded-xl p-4 shadow">
-        <h2 className="text-xl font-bold mb-2">Plan A</h2>
-        <pre className="text-sm bg-gray-100 p-2 rounded">
-          {JSON.stringify(plans.planA, null, 2)}
-        </pre>
-        <button className="btn-primary mt-4">Select Plan A</button>
+  if (!plansJson) {
+    // If plansJson is not immediately available, show a spinner.
+    // This might happen if there's a very brief delay in searchParams being ready,
+    // or if the user navigated here incorrectly.
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <LoadingSpinner />
+        <p className="text-xl ml-4">Loading plans...</p>
       </div>
+    );
+  }
 
-      <div className="border rounded-xl p-4 shadow">
-        <h2 className="text-xl font-bold mb-2">Plan B</h2>
-        <pre className="text-sm bg-gray-100 p-2 rounded">
-          {JSON.stringify(plans.planB, null, 2)}
-        </pre>
-        <button className="btn-primary mt-4">Select Plan B</button>
+  try {
+    const plans: Itinerary = JSON.parse(plansJson);
+
+    if (!plans || (!plans.planA && !plans.planB)) {
+      throw new Error("Invalid plan structure");
+    }
+
+    return <PlanComparison plans={plans} />;
+  } catch (error) {
+    console.error("Failed to parse plans:", error);
+    return (
+      <div className="h-screen flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-xl text-red-500">
+            Could not load itinerary plans.
+          </p>
+          <p className="text-sm text-gray-500">
+            The data might be corrupted. Please try generating the trip again.
+          </p>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

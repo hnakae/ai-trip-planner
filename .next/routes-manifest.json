@@ -46,6 +46,12 @@
       "namedRegex": "^/api/generate\\-itinerary(?:/)?$"
     },
     {
+      "page": "/calendar-export",
+      "regex": "^/calendar\\-export(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/calendar\\-export(?:/)?$"
+    },
+    {
       "page": "/compare",
       "regex": "^/compare(?:/)?$",
       "routeKeys": {},

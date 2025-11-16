@@ -3,6 +3,7 @@
 
 import { useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
 export default function GenerateClient() {
   const router = useRouter();
@@ -26,7 +27,8 @@ export default function GenerateClient() {
 
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="text-2xl animate-pulse">Generating Plan A & B...</div>
+      <LoadingSpinner />
+      <p className="text-2xl animate-pulse ml-4">Generating Plan A & B...</p>
     </div>
   );
 }

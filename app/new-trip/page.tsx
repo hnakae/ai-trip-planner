@@ -7,9 +7,9 @@ import { useRouter } from "next/navigation";
 export default function NewTripPage() {
   const router = useRouter();
   const [form, setForm] = useState({
-    destination: "",
-    startDate: "",
-    endDate: "",
+    destination: "Eugene, Oregon",
+    startDate: "2025-11-28",
+    endDate: "2025-11-29",
     budget: "",
     preferences: "",
   });
@@ -27,14 +27,14 @@ export default function NewTripPage() {
     <div className="max-w-xl mx-auto py-10 space-y-6">
       <h1 className="text-3xl font-bold">Create New Trip</h1>
 
-      <input name="destination" placeholder="Destination" className="input" onChange={handleChange} />
+      <input name="destination" placeholder="Destination" className="input" value={form.destination} onChange={handleChange} />
 
-      <input type="date" name="startDate" className="input" onChange={handleChange} />
-      <input type="date" name="endDate" className="input" onChange={handleChange} />
+      <input type="date" name="startDate" className="input" value={form.startDate} onChange={handleChange} />
+      <input type="date" name="endDate" className="input" value={form.endDate} onChange={handleChange} />
 
-      <input name="budget" placeholder="Budget" className="input" onChange={handleChange} />
+      <input name="budget" placeholder="Budget" className="input" value={form.budget} onChange={handleChange} />
 
-      <input name="preferences" placeholder="Preferences (e.g., Thai, parks)" className="input" onChange={handleChange} />
+      <input name="preferences" placeholder="Preferences (e.g., Thai, parks)" className="input" value={form.preferences} onChange={handleChange} />
 
       <button onClick={submit} className="btn-primary w-full">Generate Itinerary</button>
     </div>
