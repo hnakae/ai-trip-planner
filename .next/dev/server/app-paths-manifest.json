@@ -1,7 +1,0 @@
-{
-  "/api/generate-itinerary/route": "app/api/generate-itinerary/route.js",
-  "/compare/page": "app/compare/page.js",
-  "/generate/page": "app/generate/page.js",
-  "/new-trip/page": "app/new-trip/page.js",
-  "/page": "app/page.js"
-}
